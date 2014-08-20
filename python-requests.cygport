@@ -1,7 +1,7 @@
 inherit python-distutils
 
 NAME="python-requests"
-VERSION=2.2.1
+VERSION=2.3.0
 RELEASE=1
 CATEGORY="Python"
 SUMMARY="Python HTTP/1.1 request module"
@@ -11,9 +11,15 @@ access the response data in the same way. It's powered by httplib and urllib3,
 but it does all the hard work and crazy hacks for you."
 HOMEPAGE="http://www.python-requests.org/"
 
-PATCH_URI="2.2.1-system-deps.patch"
+PATCH_URI="
+	http://pkgs.fedoraproject.org/cgit/python-requests.git/plain/python-requests-system-cert-bundle.patch
+	http://pkgs.fedoraproject.org/cgit/python-requests.git/plain/python-requests-system-chardet-not-charade.patch
+	http://pkgs.fedoraproject.org/cgit/python-requests.git/plain/python-requests-system-urllib3.patch
+"
 
 CYGPORT_USE_UNSTABLE_API=1
 src_unpack_hook() {
 	rm -fr requests/packages/
+	rm -f  requests/cacert.pem
+	sed -i -e '/requests\.packages/d' setup.py
 }
