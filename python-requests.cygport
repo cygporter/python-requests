@@ -1,7 +1,7 @@
 inherit python-wheel
 
 NAME="python-requests"
-VERSION=2.13.0
+VERSION=2.21.0
 RELEASE=1
 CATEGORY="Python"
 SUMMARY="Python HTTP/1.1 request module"
@@ -12,19 +12,16 @@ but it does all the hard work and crazy hacks for you."
 HOMEPAGE="http://www.python-requests.org/"
 
 PATCH_URI="
-	http://pkgs.fedoraproject.org/cgit/rpms/python-requests.git/plain/python-requests-system-cert-bundle.patch
-	http://pkgs.fedoraproject.org/cgit/rpms/python-requests.git/plain/python-requests-remove-nested-bundling-dep.patch
-	http://pkgs.fedoraproject.org/cgit/rpms/python-requests.git/plain/python-requests-urllib3-at-1.20.patch
+	https://src.fedoraproject.org/cgit/rpms/python-requests.git/plain/patch-requests-certs.py-to-use-the-system-CA-bundle.patch
+	https://src.fedoraproject.org/cgit/rpms/python-requests.git/plain/Remove-tests-that-use-the-tarpit.patch
+	https://src.fedoraproject.org/cgit/rpms/python-requests.git/plain/Don-t-inject-pyopenssl-into-urllib3.patch
+	https://src.fedoraproject.org/cgit/rpms/python-requests.git/plain/requests-2.20.0-no-py2-httpbin.patch
 "
 
 ARCH=noarch
 
-python2_requests_REQUIRES="ca-certificates python2-chardet python2-idna python2-urllib3"
-python3_requests_REQUIRES="ca-certificates python3-chardet python3-idna python3-urllib3"
+python27_requests_REQUIRES="ca-certificates"
+python36_requests_REQUIRES="ca-certificates"
+python37_requests_REQUIRES="ca-certificates"
 
-CYGPORT_USE_UNSTABLE_API=1
-src_unpack_hook() {
-	rm -fr requests/packages/{chardet,idna,urllib3}
-	rm -f  requests/cacert.pem
-	sed -i -e '/requests\.packages\./d' setup.py
-}
+DISTCLEANFILES="requests/cacert.pem"
