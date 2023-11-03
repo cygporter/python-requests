@@ -1,7 +1,8 @@
+PYTHON_WHEEL_VERSIONS="3.6:3.7:3.8:3.9"
 inherit python-wheel
 
 NAME="python-requests"
-VERSION=2.21.0
+VERSION=2.27.1
 RELEASE=1
 CATEGORY="Python"
 SUMMARY="Python HTTP/1.1 request module"
@@ -9,19 +10,19 @@ DESCRIPTION="Requests allow you to send HTTP/1.1 requests. You can add headers,
 form data, multipart files, and parameters with simple Python dictionaries, and
 access the response data in the same way. It's powered by httplib and urllib3,
 but it does all the hard work and crazy hacks for you."
-HOMEPAGE="http://www.python-requests.org/"
+HOMEPAGE="https://requests.readthedocs.io/en/master/"
 
 PATCH_URI="
-	https://src.fedoraproject.org/cgit/rpms/python-requests.git/plain/patch-requests-certs.py-to-use-the-system-CA-bundle.patch
-	https://src.fedoraproject.org/cgit/rpms/python-requests.git/plain/Remove-tests-that-use-the-tarpit.patch
-	https://src.fedoraproject.org/cgit/rpms/python-requests.git/plain/Don-t-inject-pyopenssl-into-urllib3.patch
-	https://src.fedoraproject.org/cgit/rpms/python-requests.git/plain/requests-2.20.0-no-py2-httpbin.patch
+	https://src.fedoraproject.org/rpms/python-requests/raw/rawhide/f/patch-requests-certs.py-to-use-the-system-CA-bundle.patch
+	https://src.fedoraproject.org/rpms/python-requests/raw/rawhide/f/Remove-tests-that-use-the-tarpit.patch
+	https://src.fedoraproject.org/rpms/python-requests/raw/rawhide/f/requests-2.12.4-tests_nonet.patch
 "
 
 ARCH=noarch
 
-python27_requests_REQUIRES="ca-certificates"
-python36_requests_REQUIRES="ca-certificates"
-python37_requests_REQUIRES="ca-certificates"
+python36_requests_REQUIRES="ca-certificates python36-chardet"
+python37_requests_REQUIRES="ca-certificates python37-chardet"
+python38_requests_REQUIRES="ca-certificates python38-chardet"
+python39_requests_REQUIRES="ca-certificates python39-chardet"
 
 DISTCLEANFILES="requests/cacert.pem"
