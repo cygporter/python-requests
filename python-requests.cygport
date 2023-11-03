@@ -13,9 +13,9 @@ but it does all the hard work and crazy hacks for you."
 HOMEPAGE="https://requests.readthedocs.io/en/master/"
 
 PATCH_URI="
-	https://src.fedoraproject.org/rpms/python-requests/raw/rawhide/f/patch-requests-certs.py-to-use-the-system-CA-bundle.patch
-	https://src.fedoraproject.org/rpms/python-requests/raw/rawhide/f/Remove-tests-that-use-the-tarpit.patch
-	https://src.fedoraproject.org/rpms/python-requests/raw/rawhide/f/requests-2.12.4-tests_nonet.patch
+	patch-requests-certs.py-to-use-the-system-CA-bundle.patch
+	Remove-tests-that-use-the-tarpit.patch
+	requests-2.12.4-tests_nonet.patch
 "
 
 ARCH=noarch
