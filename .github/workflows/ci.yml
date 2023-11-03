@@ -1,0 +1,10 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  build-test:
+    uses: cygporter/workflows/.github/workflows/build-test.yml@v2
+    with:
+      cygport_file: python-requests.cygport
+      bootstrap_packages: >
+        cygport python36-wheel python37-wheel python38-wheel python39-wheel
+        python36-devel python37-devel python38-devel python39-devel
