@@ -6,5 +6,5 @@ jobs:
     with:
       cygport_file: python-requests.cygport
       bootstrap_packages: >
-        cygport python36-wheel python37-wheel python38-wheel python39-wheel
-        python36-devel python37-devel python38-devel python39-devel
+        cygport python37-wheel python38-wheel python39-wheel python37-devel
+        python38-devel python39-devel
