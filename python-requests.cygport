@@ -2,7 +2,7 @@ PYTHON_WHEEL_VERSIONS="3.6:3.7:3.8:3.9"
 inherit python-wheel
 
 NAME="python-requests"
-VERSION=2.27.1
+VERSION=2.30.0
 RELEASE=1
 CATEGORY="Python"
 SUMMARY="Python HTTP/1.1 request module"
